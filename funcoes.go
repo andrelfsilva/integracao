@@ -1,7 +1,7 @@
 package integracao
 
 import (
-	_ "bytes"
+	"bytes"
 	_ "database/sql"
 	"encoding/csv"
 	_ "encoding/json"
