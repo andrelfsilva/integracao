@@ -1,6 +1,5 @@
 package integracao
 
-
 import (
 	"bytes"
 	_ "database/sql"
@@ -93,7 +92,7 @@ func Gravararquivo(post []byte, arquivo string) {
 	}
 }
 
-func gravarArquivo(post []byte, arquivo string) error {
+func GravarArquivo(post []byte, arquivo string) error {
 
 	// output, err := xml.Marshal(&post)
 	err := ioutil.WriteFile(arquivo, post, 0644)
@@ -104,20 +103,20 @@ func gravarArquivo(post []byte, arquivo string) error {
 	return err
 }
 
-func checkErr(err error) {
+func CheckErr(err error) {
 	if err != nil {
 		fmt.Println("Erro de Panic: ", err)
 		panic(err)
 	}
 }
 
-func logErros(err error) {
+func LogErros(err error) {
 	log.Fatal(err.Error())
 }
 
 // Changed to csvExport, as it doesn't make much sense to export things from
-// package main
-func csvExport(data [][]string) error {
+// Pacote
+func CsvExport(data [][]string) error {
 	file, err := os.Create("result.csv")
 	if err != nil {
 		return err
@@ -135,7 +134,7 @@ func csvExport(data [][]string) error {
 	return nil
 }
 
-func csvExport2(data [][]string) error {
+func CsvExport2(data [][]string) error {
 	file, err := os.Create("result.csv")
 	if err != nil {
 		return err

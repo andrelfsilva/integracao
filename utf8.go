@@ -11,7 +11,7 @@ import (
 	"unicode/utf8"
 )
 
-// ValidUTF8Reader implements a Reader which reads only bytes that constitute valid UTF-8
+// Estuturu ValidUTF8Reader implements a Reader which reads only bytes that constitute valid UTF-8
 type ValidUTF8Reader struct {
 	buffer *bufio.Reader
 }
