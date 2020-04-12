@@ -1,10 +1,11 @@
 package integracao
 
+
 import (
 	"bytes"
 	_ "database/sql"
 	"encoding/csv"
-	_ "encoding/json"
+
 	"fmt"
 	_ "io"
 	"io/ioutil"
@@ -23,16 +24,16 @@ var (
 	logger *log.Logger
 )
 
-// FunÁ„o para inicialiar os registros de log
-// Deve ser colocado no inicio da funÁ„o main
+// Fun√ß√£o para inicialiar os registros de log
+// Deve ser colocado no inicio da fun√ß√£o main
 
 func InicializarLog() {
 	logger = log.New(&buf, "logger: ", log.Lshortfile)
 
 }
 
-// FunÁ„o: Permitir utilizar verbose (DEBUG) no sistema com controle de operaÁ„o
-// Entrada: vari·vel de ativaÁ„o do log verbose
+// Fun√ß√£o: Permitir utilizar verbose (DEBUG) no sistema com controle de opera√ß√£o
+// Entrada: vari√°vel de ativa√ß√£o do log verbose
 // Usar logger.Println(a)
 func ExibirLog(verbose bool) {
 	if verbose {
