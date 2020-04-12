@@ -1,4 +1,4 @@
-package main
+package integracao
 
 import (
 	_ "bytes"
@@ -23,8 +23,18 @@ var (
 	logger *log.Logger
 )
 
-// Necessita Definir a variavel verbose como constante
-func TracerOperacoes(verbose bool) {
+// Função para inicialiar os registros de log
+// Deve ser colocado no inicio da função main
+
+func InicializarLog() {
+	logger = log.New(&buf, "logger: ", log.Lshortfile)
+
+}
+
+// Função: Permitir utilizar verbose (DEBUG) no sistema com controle de operação
+// Entrada: variável de ativação do log verbose
+// Usar logger.Println(a)
+func ExibirLog(verbose bool) {
 	if verbose {
 		fmt.Print(&buf)
 
@@ -32,18 +42,18 @@ func TracerOperacoes(verbose bool) {
 
 }
 
-func leitura_arquivo(arquivo string) ([]byte, error) {
+func LeituraArquivo(arquivo string) ([]byte, error) {
 	jsonFile, err := os.Open(arquivo)
 	if err != nil {
 		fmt.Println("Error opening  file:", err)
-		// return nil, err
+		return nil, err
 	}
 
 	defer jsonFile.Close()
 	jsonData, err := ioutil.ReadAll(jsonFile)
 	if err != nil {
 		fmt.Println("Error reading  data:", err)
-		// return nil, err
+		return nil, err
 
 	}
 
@@ -54,7 +64,7 @@ func leitura_arquivo(arquivo string) ([]byte, error) {
 // Leitura dos arquivos de um diretorio
 // Entrada: Caminho do diretorio
 // Retorno: Saida com os arquivos
-func leitura_diretorio(diretorio string) ([]os.FileInfo, error) {
+func LeituraDiretorio(diretorio string) ([]os.FileInfo, error) {
 
 	fmt.Println("diretorio lido ", diretorio)
 	files, err := ioutil.ReadDir(diretorio)
@@ -72,7 +82,7 @@ func String2Int(s string) (int, error) {
 
 }
 
-func gravar_arquivo(post []byte, arquivo string) {
+func Gravararquivo(post []byte, arquivo string) {
 
 	// output, err := xml.Marshal(&post)
 	err := ioutil.WriteFile(arquivo, post, 0644)
@@ -88,7 +98,7 @@ func gravarArquivo(post []byte, arquivo string) error {
 	err := ioutil.WriteFile(arquivo, post, 0644)
 	if err != nil {
 		fmt.Println("Error writing  to file:", err)
-		//		return
+		//		return err
 	}
 	return err
 }
